@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NEON MEDIA VAULT</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet" />
+    <title>☠ PIRATES SHIP — NEON VAULT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@400;600&family=Pirata+One&display=swap" rel="stylesheet" />
     <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #0a0a0f;
             color: #0ff;
@@ -24,57 +19,86 @@
                 radial-gradient(ellipse at 20% 50%, rgba(0, 255, 255, 0.06) 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 50%, rgba(255, 0, 255, 0.06) 0%, transparent 60%);
             overflow-x: hidden;
+            position: relative;
+        }
+        body::before {
+            content: "☠ ☠ ☠ ☠ ☠";
+            position: fixed;
+            top: 8px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.7em;
+            letter-spacing: 50px;
+            color: rgba(255, 0, 64, 0.05);
+            pointer-events: none;
+            z-index: 0;
+            font-family: 'Pirata One', monospace;
         }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0a0a0f; }
-        ::-webkit-scrollbar-thumb { background: #0ff; border-radius: 3px; box-shadow: 0 0 8px #0ff; }
+        ::-webkit-scrollbar-thumb { background: #f04; border-radius: 3px; box-shadow: 0 0 8px #f04; }
 
-        /* ===== CONTAINER ===== */
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 940px;
             margin: 20px;
             padding: 35px 40px;
-            background: rgba(10, 10, 20, 0.88);
-            border: 2px solid #0ff;
+            background: rgba(8, 6, 14, 0.93);
+            border: 2px solid #f04;
             border-radius: 18px;
-            box-shadow:
-                0 0 30px rgba(0, 255, 255, 0.25),
-                inset 0 0 60px rgba(0, 255, 255, 0.03);
+            box-shadow: 0 0 35px rgba(255, 0, 68, 0.2), 0 0 70px rgba(255, 0, 68, 0.05), inset 0 0 60px rgba(255, 0, 68, 0.03);
             backdrop-filter: blur(8px);
             position: relative;
+            z-index: 1;
             transition: border-color 0.4s, box-shadow 0.4s;
         }
-        .container.locked {
-            border-color: #f04;
-            box-shadow: 0 0 50px rgba(255, 0, 68, 0.35);
+        .container::before {
+            content: "🏴‍☠️";
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 2.5em;
+            filter: drop-shadow(0 0 18px #f04);
+            animation: flagWave 3s ease-in-out infinite;
         }
-        .container.wiped-state {
-            border-color: #ff0040;
-            box-shadow: 0 0 70px rgba(255, 0, 64, 0.5);
-            animation: wipePulse 1.5s infinite;
+        .container::after {
+            content: "⚓";
+            position: absolute;
+            top: -15px;
+            right: 35px;
+            font-size: 1.8em;
+            opacity: 0.4;
+            filter: drop-shadow(0 0 10px #0ff);
+            animation: anchorSwing 4s ease-in-out infinite;
         }
-        @keyframes wipePulse {
-            0%, 100% { box-shadow: 0 0 70px rgba(255, 0, 64, 0.5); }
-            50% { box-shadow: 0 0 120px rgba(255, 0, 64, 0.8); }
-        }
+        @keyframes flagWave { 0%,100%{transform:rotate(-4deg)} 50%{transform:rotate(4deg)} }
+        @keyframes anchorSwing { 0%,100%{transform:rotate(5deg)} 50%{transform:rotate(-5deg)} }
+        .container.locked { border-color: #ff0040; box-shadow: 0 0 60px rgba(255,0,64,0.5); }
+        .container.wiped-state { border-color: #ff0000; box-shadow: 0 0 80px rgba(255,0,0,0.6); animation: wipePulse 1.2s infinite; }
+        @keyframes wipePulse { 0%,100%{box-shadow:0 0 80px rgba(255,0,0,0.6)} 50%{box-shadow:0 0 140px rgba(255,0,0,0.9)} }
 
-        /* ===== HEADINGS ===== */
         h1, h2, h3 {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Pirata One', 'Orbitron', monospace;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 0 0 15px #0ff, 0 0 40px #0ff55;
         }
-        h1 { font-size: 2em; margin-bottom: 25px; text-align: center; }
-        h2 { font-size: 1.3em; margin-bottom: 20px; color: #f0f; text-shadow: 0 0 12px #f0f; }
-        h3 { font-size: 1em; color: #ff0; text-shadow: 0 0 10px #ff0; }
+        h1 { font-size: 2.2em; margin-bottom: 20px; text-align: center; color: #f04; text-shadow: 0 0 20px #f04, 0 0 50px #f044; }
+        h2 { font-size: 1.3em; margin-bottom: 18px; color: #ff0; text-shadow: 0 0 12px #ff0; }
+        .subhead {
+            font-family: 'Pirata One', monospace;
+            text-align: center;
+            color: #f04;
+            font-size: 0.95em;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
 
-        /* ===== FORM ELEMENTS ===== */
         input, textarea, select, button {
             font-family: 'Fira Code', monospace;
-            background: rgba(0, 20, 30, 0.7);
-            border: 1.5px solid #0ff;
+            background: rgba(20, 0, 10, 0.7);
+            border: 1.5px solid #f04;
             color: #0ff;
             padding: 10px 16px;
             border-radius: 8px;
@@ -83,28 +107,15 @@
             transition: all 0.3s;
             width: 100%;
         }
-        input:focus, textarea:focus, select:focus {
-            border-color: #f0f;
-            box-shadow: 0 0 18px rgba(255, 0, 255, 0.3);
-        }
+        input:focus, textarea:focus, select:focus { border-color: #ff0; box-shadow: 0 0 18px rgba(255,255,0,0.3); }
 
-        /* ===== NEON FILE INPUT ===== */
         input[type="file"] {
             padding: 6px 10px;
             border: 2px solid #f0f;
             background: rgba(255, 0, 255, 0.06);
             box-shadow: 0 0 12px rgba(255, 0, 255, 0.15);
-            transition: all 0.3s;
         }
-        input[type="file"]:hover {
-            border-color: #0ff;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
-            background: rgba(0, 255, 255, 0.06);
-        }
-        input[type="file"]:focus {
-            border-color: #ff0;
-            box-shadow: 0 0 25px rgba(255, 255, 0, 0.25);
-        }
+        input[type="file"]:hover { border-color: #0ff; box-shadow: 0 0 20px rgba(0,255,255,0.25); }
         input[type="file"]::file-selector-button {
             background: transparent;
             border: 2px solid #f0f;
@@ -120,17 +131,15 @@
             box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
         }
         input[type="file"]::file-selector-button:hover {
-            background: #f0f;
-            color: #000;
-            box-shadow: 0 0 25px #f0f, inset 0 0 10px #ff88ff;
+            background: #f0f; color: #000;
+            box-shadow: 0 0 25px #f0f;
             transform: scale(1.03);
         }
 
-        /* ===== BUTTONS ===== */
         button, .btn {
             background: transparent;
-            border: 2px solid #0ff;
-            color: #0ff;
+            border: 2px solid #f04;
+            color: #f04;
             cursor: pointer;
             font-weight: 600;
             letter-spacing: 1px;
@@ -142,58 +151,23 @@
             display: inline-block;
             font-size: 0.85em;
         }
-        button:hover, .btn:hover {
-            background: #0ff;
-            color: #000;
-            box-shadow: 0 0 25px #0ff, inset 0 0 10px #0ff55;
-        }
-        button.danger {
-            border-color: #f04;
-            color: #f04;
-        }
-        button.danger:hover {
-            background: #f04;
-            color: #000;
-            box-shadow: 0 0 25px #f04;
-        }
-        button.pink {
-            border-color: #f0f;
-            color: #f0f;
-        }
-        button.pink:hover {
-            background: #f0f;
-            color: #000;
-            box-shadow: 0 0 25px #f0f;
-        }
-        button.yellow {
-            border-color: #ff0;
-            color: #ff0;
-        }
-        button.yellow:hover {
-            background: #ff0;
-            color: #000;
-            box-shadow: 0 0 25px #ff0;
-        }
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-            width: 100%;
-        }
-        label {
-            display: block;
-            margin-bottom: 6px;
-            color: #f0f;
-            font-size: 0.85em;
-            letter-spacing: 1px;
-        }
+        button:hover, .btn:hover { background: #f04; color: #000; box-shadow: 0 0 25px #f04; }
+        button.cyan { border-color: #0ff; color: #0ff; }
+        button.cyan:hover { background: #0ff; color: #000; box-shadow: 0 0 25px #0ff; }
+        button.pink { border-color: #f0f; color: #f0f; }
+        button.pink:hover { background: #f0f; color: #000; box-shadow: 0 0 25px #f0f; }
+        button.yellow { border-color: #ff0; color: #ff0; }
+        button.yellow:hover { background: #ff0; color: #000; box-shadow: 0 0 25px #ff0; }
+        button.green { border-color: #0f0; color: #0f0; }
+        button.green:hover { background: #0f0; color: #000; box-shadow: 0 0 25px #0f0; }
+        button.danger { border-color: #f04; color: #f04; }
+        button.danger:hover { background: #f04; color: #000; box-shadow: 0 0 25px #f04; }
+        button.small { padding: 6px 14px; font-size: 0.75em; }
 
-        /* ===== LAYOUT ===== */
-        .row {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
+        textarea { min-height: 120px; resize: vertical; width: 100%; }
+        label { display: block; margin-bottom: 6px; color: #f0f; font-size: 0.85em; letter-spacing: 1px; }
+
+        .row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
         .row > * { flex: 1; min-width: 150px; }
         .col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .col-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
@@ -205,182 +179,99 @@
         .flex-center { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center; }
         .hidden { display: none !important; }
 
-        /* ===== MESSAGE ===== */
         .msg {
-            padding: 12px 18px;
-            border-radius: 8px;
-            margin-bottom: 18px;
-            font-size: 0.9em;
-            border-left: 4px solid;
-            animation: slideIn 0.4s;
+            padding: 12px 18px; border-radius: 8px; margin-bottom: 18px; font-size: 0.9em;
+            border-left: 4px solid; animation: slideIn 0.4s;
         }
-        .msg.success { background: rgba(0, 255, 255, 0.1); border-color: #0ff; color: #0ff; }
-        .msg.error { background: rgba(255, 0, 68, 0.12); border-color: #f04; color: #f04; }
-        .msg.info { background: rgba(255, 255, 0, 0.08); border-color: #ff0; color: #ff0; }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .msg.success { background: rgba(0,255,255,0.1); border-color: #0ff; color: #0ff; }
+        .msg.error { background: rgba(255,0,68,0.12); border-color: #f04; color: #f04; }
+        .msg.info { background: rgba(255,255,0,0.08); border-color: #ff0; color: #ff0; }
+        @keyframes slideIn { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:translateY(0)} }
 
-        /* ===== SECTIONS ===== */
         .section {
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 255, 255, 0.15);
-            border-radius: 12px;
-            background: rgba(0, 20, 30, 0.3);
-            transition: 0.3s;
+            padding: 20px; margin-bottom: 18px;
+            border: 1px solid rgba(255, 0, 68, 0.15); border-radius: 12px;
+            background: rgba(20, 0, 10, 0.3); transition: 0.3s;
         }
-        .section:hover {
-            border-color: rgba(0, 255, 255, 0.4);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
-        }
+        .section:hover { border-color: rgba(255,0,68,0.4); box-shadow: 0 0 20px rgba(255,0,68,0.05); }
         .section-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 0.85em;
-            color: #ff0;
-            text-shadow: 0 0 8px #ff0;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
+            font-family: 'Pirata One', monospace;
+            font-size: 1em; color: #ff0; text-shadow: 0 0 8px #ff0;
+            margin-bottom: 15px; letter-spacing: 2px;
         }
+        .section-title .skull { color: #f04; }
 
-        /* ===== FILE LIST ===== */
-        .file-list {
-            max-height: 200px;
-            overflow-y: auto;
-            padding: 5px;
-        }
+        .file-list { max-height: 200px; overflow-y: auto; padding: 5px; }
         .file-item {
-            padding: 8px 12px;
-            border: 1px solid rgba(0, 255, 255, 0.12);
-            border-radius: 6px;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            transition: 0.2s;
-            font-size: 0.85em;
+            padding: 8px 12px; border: 1px solid rgba(255,0,68,0.12); border-radius: 6px;
+            margin-bottom: 5px; display: flex; align-items: center;
+            justify-content: space-between; gap: 10px; transition: 0.2s; font-size: 0.85em;
         }
-        .file-item:hover {
-            background: rgba(0, 255, 255, 0.05);
-            border-color: #0ff55;
-        }
+        .file-item:hover { background: rgba(255,0,68,0.05); border-color: #f0455; }
         .file-item .fname { color: #0ff; flex: 1; cursor: pointer; }
         .file-item .fname:hover { text-shadow: 0 0 8px #0ff; }
         .file-item .fsize { color: #888; font-size: 0.8em; }
         .file-item .factions { display: flex; gap: 6px; }
-        .file-item .factions button {
-            padding: 4px 10px;
-            font-size: 0.75em;
-            border-width: 1.5px;
-        }
+        .file-item .factions button { padding: 4px 10px; font-size: 0.75em; border-width: 1.5px; }
 
-        /* ===== MEDIA PLAYER ===== */
-        .media-player {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            margin-top: 10px;
-        }
-        .media-player::-webkit-media-controls-panel {
-            background: rgba(0, 20, 30, 0.9);
-        }
+        .media-player { width: 100%; border-radius: 10px; border: 1px solid rgba(255,0,68,0.2); margin-top: 10px; }
 
-        /* ===== STATUS BAR ===== */
         .status-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 14px;
-            background: rgba(0, 255, 255, 0.04);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 0.75em;
-            color: #888;
-            margin-top: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 8px 14px; background: rgba(255,0,68,0.04);
+            border: 1px solid rgba(255,0,68,0.1); border-radius: 8px;
+            font-size: 0.75em; color: #888; margin-top: 15px;
         }
         .status-bar .online { color: #0f0; text-shadow: 0 0 6px #0f0; }
         .status-bar .attempts { color: #ff0; }
 
-        /* ===== WIPED OVERLAY ===== */
-        .wiped-overlay {
-            text-align: center;
-            padding: 50px 20px;
-        }
+        .wiped-overlay { text-align: center; padding: 50px 20px; }
         .wiped-overlay h1 {
-            font-size: 3em;
-            color: #ff0040;
-            text-shadow: 0 0 40px #ff0040, 0 0 80px #ff004055;
+            font-size: 3.2em; color: #ff0000;
+            text-shadow: 0 0 40px #ff0000, 0 0 80px #ff000055;
             animation: flicker 2s infinite;
+            font-family: 'Pirata One', monospace;
         }
-        .wiped-overlay p {
-            color: #ff6699;
-            margin-top: 20px;
-            font-size: 1.1em;
-        }
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            92% { opacity: 1; }
-            93% { opacity: 0.3; }
-            94% { opacity: 1; }
-            96% { opacity: 0.5; }
-            97% { opacity: 1; }
-        }
+        .wiped-overlay p { color: #ff6666; margin-top: 20px; font-size: 1.1em; }
+        @keyframes flicker { 0%,100%{opacity:1} 92%{opacity:1} 93%{opacity:0.2} 94%{opacity:1} 96%{opacity:0.5} 97%{opacity:1} }
 
-        /* ===== BG MEDIA CONTROLS ===== */
         .bg-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
-            display: flex;
-            gap: 8px;
-            align-items: center;
+            position: fixed; bottom: 20px; right: 20px; z-index: 999;
+            display: flex; gap: 8px; align-items: center;
         }
         .bg-controls button {
-            width: auto;
-            padding: 8px 14px;
-            font-size: 0.75em;
-            border-radius: 30px;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(4px);
+            width: auto; padding: 8px 14px; font-size: 0.75em; border-radius: 30px;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
         }
-        .bg-controls .vol-slider {
-            width: 80px;
-            padding: 4px 8px;
-            border-radius: 30px;
-            background: rgba(0, 0, 0, 0.7);
-        }
+        .bg-controls .vol-slider { width: 80px; padding: 4px 8px; border-radius: 30px; background: rgba(0,0,0,0.7); }
 
-        /* ===== GLITCH LINE ===== */
         .glitch-line {
             height: 2px;
-            background: linear-gradient(90deg, transparent, #0ff, #f0f, #0ff, transparent);
-            margin: 20px 0;
-            opacity: 0.4;
-            animation: glitchLine 3s infinite;
+            background: linear-gradient(90deg, transparent, #f04, #ff0, #f04, transparent);
+            margin: 18px 0; opacity: 0.4; animation: glitchLine 3s infinite;
         }
-        @keyframes glitchLine {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-        }
+        @keyframes glitchLine { 0%,100%{opacity:0.3} 50%{opacity:0.7} }
 
-        /* ===== RESPONSIVE ===== */
+        .github-sync-status {
+            font-size: 0.75em; padding: 6px 12px; border-radius: 6px;
+            display: inline-block;
+        }
+        .github-sync-status.connected { color: #0f0; border: 1px solid #0f044; }
+        .github-sync-status.disconnected { color: #f04; border: 1px solid #f0422; }
+
         @media (max-width: 768px) {
             .container { padding: 20px; margin: 10px; }
             .col-2, .col-3 { grid-template-columns: 1fr; }
-            h1 { font-size: 1.4em; }
+            h1 { font-size: 1.6em; }
             .row { flex-direction: column; }
             .bg-controls { bottom: 10px; right: 10px; }
+            .container::before { font-size: 1.8em; top: -16px; left: 15px; }
+            .container::after { font-size: 1.2em; top: -12px; right: 18px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- BACKGROUND MEDIA (hidden video/audio that auto-plays)        -->
-<!-- ============================================================ -->
 <video id="bgVideo" loop muted playsinline style="display:none" preload="auto">
     <source src="bm4.mp4" type="video/mp4" />
 </video>
@@ -388,50 +279,37 @@
     <source src="bm.mp3" type="audio/mpeg" />
 </audio>
 
-<!-- ============================================================ -->
-<!-- BACKGROUND CONTROLS (bottom-right)                           -->
-<!-- ============================================================ -->
 <div class="bg-controls" id="bgControls">
     <button id="bgToggle" class="pink" title="Background Music ON/OFF">♪ ON</button>
     <input type="range" id="bgVolume" class="vol-slider" min="0" max="1" step="0.05" value="0.3" />
     <button id="bgSource" class="yellow" title="Switch BG Source">🎵 MP3</button>
 </div>
 
-<!-- ============================================================ -->
-<!-- MAIN CONTAINER                                               -->
-<!-- ============================================================ -->
 <div class="container" id="appContainer">
 
     <!-- ===== PAGE: WIPED ===== -->
     <div id="pageWiped" class="hidden">
         <div class="wiped-overlay">
-            <h1>☠ SYSTEM FORMATTED ☠</h1>
-            <p>🔴 All data destroyed — excessive failed attempts detected.</p>
-            <p style="color:#555;margin-top:30px;font-size:0.8em;">
-                [ Clear localStorage &amp; refresh to restart ]
-            </p>
-            <button class="danger mt-20" onclick="localStorage.clear();location.reload();">
-                ⟳ RESET SYSTEM
-            </button>
+            <h1>☠ SHIP SUNK ☠</h1>
+            <p>🔴 All data scuttled — too many failed access attempts!</p>
+            <p style="color:#555;margin-top:30px;font-size:0.8em;">[ Clear browser data &amp; refresh to restart ]</p>
+            <button class="danger mt-20" onclick="localStorage.clear();location.reload();">⟳ RAISE THE SHIP</button>
         </div>
     </div>
 
     <!-- ===== PAGE: LOGIN ===== -->
     <div id="pageLogin">
-        <h1>⚡ NEON VAULT ⚡</h1>
+        <h1>🏴‍☠️ PIRATES SHIP</h1>
+        <div class="subhead">☠ NEON VAULT — mrobot09's Locker ☠</div>
         <div class="glitch-line"></div>
-        <p style="text-align:center;color:#888;margin-bottom:20px;font-size:0.85em;">
-            ENTER ACCESS PASSWORD
-        </p>
-
+        <p style="text-align:center;color:#888;margin-bottom:20px;font-size:0.85em;">⚓ ENTER THE CAPTAIN'S CODE ⚓</p>
         <div id="loginMsg"></div>
-
         <div class="section">
-            <div class="section-title">🔐 ACCESS</div>
+            <div class="section-title"><span class="skull">☠</span> ACCESS PORTAL</div>
             <div class="row">
                 <input type="password" id="loginPass" placeholder="Enter password..." autocomplete="off"
                        onkeydown="if(event.key==='Enter')handleLogin();" />
-                <button onclick="handleLogin()" style="flex:0 0 auto;width:auto;padding:10px 30px;">ENTER</button>
+                <button onclick="handleLogin()" style="flex:0 0 auto;width:auto;padding:10px 30px;">⚓ ENTER</button>
             </div>
             <div class="flex-center mt-10" style="justify-content:space-between;">
                 <span id="attemptDisplay" style="color:#ff0;font-size:0.8em;">Attempts: 0 / 2</span>
@@ -439,26 +317,57 @@
         </div>
     </div>
 
-    <!-- ===== PAGE: DASHBOARD (after login) ===== -->
+    <!-- ===== PAGE: DASHBOARD ===== -->
     <div id="pageDashboard" class="hidden">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-            <h1 style="margin:0;font-size:1.5em;">⚡ DASHBOARD</h1>
-            <button class="danger" onclick="handleLogout()" style="padding:6px 18px;font-size:0.75em;">⏻ LOGOUT</button>
+            <h1 style="margin:0;font-size:1.6em;">🏴‍☠️ DASHBOARD</h1>
+            <div class="flex" style="gap:8px;">
+                <span id="githubStatusBadge" class="github-sync-status disconnected">⚓ Local Only</span>
+                <button class="danger small" onclick="handleLogout()">⏻ LOGOUT</button>
+            </div>
         </div>
         <div class="glitch-line"></div>
-
         <div id="dashMsg"></div>
 
-        <!-- Status Bar -->
         <div class="status-bar">
             <span><span class="online">●</span> SESSION ACTIVE</span>
             <span id="fileCount">Files: 0</span>
             <span class="attempts" id="dashAttempts">Attempts: 0/2</span>
         </div>
 
-        <!-- ===== SECTION: UPLOAD MEDIA ===== -->
+        <!-- ===== GITHUB SYNC SECTION ===== -->
         <div class="section">
-            <div class="section-title">🎬 UPLOAD MEDIA (MP4 / MP3)</div>
+            <div class="section-title"><span class="skull">☠</span> GITHUB SYNC — PERSIST DATA ACROSS INTERNET</div>
+            <p style="color:#888;font-size:0.75em;margin-bottom:12px;">
+                Connect to your GitHub repo so your <strong>v.json</strong> data stays synchronized across all devices.
+                Data is stored in <code>v.json</code> in your repo root.
+            </p>
+            <div class="col-3">
+                <div>
+                    <label>GitHub Username</label>
+                    <input type="text" id="githubUser" placeholder="mrobot09" />
+                </div>
+                <div>
+                    <label>Repository Name</label>
+                    <input type="text" id="githubRepo" placeholder="my-vault" />
+                </div>
+                <div>
+                    <label>Personal Access Token</label>
+                    <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx" />
+                </div>
+            </div>
+            <div class="flex mt-10">
+                <button class="green" onclick="connectGithub()">🔗 CONNECT &amp; SYNC</button>
+                <button class="cyan small" onclick="pushToGithub()">⬆ PUSH TO GITHUB</button>
+                <button class="yellow small" onclick="pullFromGithub()">⬇ PULL FROM GITHUB</button>
+                <button class="pink small" onclick="disconnectGithub()">✕ DISCONNECT</button>
+            </div>
+            <div id="githubMsg" class="mt-10" style="font-size:0.8em;"></div>
+        </div>
+
+        <!-- ===== UPLOAD MEDIA ===== -->
+        <div class="section">
+            <div class="section-title"><span class="skull">☠</span> UPLOAD MEDIA (MP4 / MP3)</div>
             <div class="row">
                 <input type="file" id="mediaUpload" accept=".mp4,.mp3" />
                 <button onclick="uploadMedia()">⬆ UPLOAD</button>
@@ -468,15 +377,15 @@
                 <video id="videoPlayer" class="media-player" controls style="display:none;" preload="metadata"></video>
                 <audio id="audioPlayer" class="media-player" controls style="display:none;" preload="metadata"></audio>
             </div>
-            <div class="mt-10" id="mediaList">
+            <div class="mt-10">
                 <label>📁 Uploaded Media</label>
                 <div class="file-list" id="mediaFileList"></div>
             </div>
         </div>
 
-        <!-- ===== SECTION: TEXT FILES ===== -->
+        <!-- ===== TEXT FILES ===== -->
         <div class="section">
-            <div class="section-title">📄 TEXT FILES</div>
+            <div class="section-title"><span class="skull">☠</span> TEXT FILES</div>
             <div class="col-2">
                 <div>
                     <label>Upload .txt file</label>
@@ -491,51 +400,51 @@
                     </div>
                 </div>
             </div>
-
             <div class="mt-10" id="txtEditorArea" style="display:none;">
-                <label id="txtEditorLabel">📝 Editing: <span id="currentTxtName" style="color:#0ff;"></span></label>
+                <label>📝 Editing: <span id="currentTxtName" style="color:#0ff;"></span></label>
                 <textarea id="txtEditor" placeholder="Write something..."></textarea>
                 <div class="flex mt-10">
                     <button onclick="saveTxtFile()">💾 SAVE</button>
                     <button class="danger" onclick="closeTxtEditor()">✕ CLOSE</button>
                 </div>
             </div>
-
             <div class="mt-10">
                 <label>📁 Saved Text Files</label>
                 <div class="file-list" id="txtFileList"></div>
             </div>
         </div>
 
-        <!-- ===== SECTION: STORAGE INFO ===== -->
+        <!-- ===== STORAGE INFO ===== -->
         <div class="section">
-            <div class="section-title">💾 v.json STORAGE</div>
-            <div style="font-size:0.78em;color:#888;word-break:break-all;max-height:100px;overflow-y:auto;padding:8px;border:1px solid rgba(0,255,255,0.08);border-radius:6px;">
+            <div class="section-title"><span class="skull">☠</span> v.json STORAGE</div>
+            <div style="font-size:0.78em;color:#888;word-break:break-all;max-height:100px;overflow-y:auto;padding:8px;border:1px solid rgba(255,0,68,0.08);border-radius:6px;">
                 <pre id="jsonPreview" style="white-space:pre-wrap;color:#0ff88;">Loading...</pre>
             </div>
             <div class="flex mt-10">
-                <button class="pink" onclick="refreshJsonPreview()">⟳ REFRESH</button>
-                <button class="danger" onclick="if(confirm('Format everything? This will wipe all data!'))handleFormat();">☠ FORMAT SYSTEM</button>
+                <button class="pink small" onclick="refreshJsonPreview()">⟳ REFRESH</button>
+                <button class="cyan small" onclick="exportData()">⬇ EXPORT JSON</button>
+                <button class="yellow small" onclick="document.getElementById('importFileInput').click()">⬆ IMPORT JSON</button>
+                <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="importData(event)" />
+                <button class="danger small" onclick="if(confirm('☠ Format everything? This will wipe ALL data!'))handleFormat();">☠ FORMAT</button>
             </div>
         </div>
     </div>
-
 </div>
 
 <script>
 // ================================================================
-// DATA LAYER  —  v.json simulated via localStorage
+// DATA LAYER  -  v.json via localStorage + GitHub Sync
 // ================================================================
 const STORAGE_KEY = 'neon_vault_json';
+const GITHUB_CONFIG_KEY = 'neon_github_config';
 const MAX_ATTEMPTS = 2;
 
 function getData() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
         try { return JSON.parse(raw); }
-        catch(e) { /* corrupted, reset */ }
+        catch(e) {}
     }
-    // Default structure — password is mrobot09
     const def = {
         password: 'mrobot09',
         failed_attempts: 0,
@@ -549,6 +458,7 @@ function getData() {
 function saveData(data) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data, null, 2));
     refreshJsonPreview();
+    refreshFileLists();
 }
 
 function generateId() {
@@ -556,24 +466,229 @@ function generateId() {
 }
 
 // ================================================================
+// GITHUB SYNC ENGINE
+// ================================================================
+function getGithubConfig() {
+    const raw = localStorage.getItem(GITHUB_CONFIG_KEY);
+    if (raw) {
+        try { return JSON.parse(raw); }
+        catch(e) {}
+    }
+    return { user: '', repo: '', token: '' };
+}
+
+function saveGithubConfig(cfg) {
+    localStorage.setItem(GITHUB_CONFIG_KEY, JSON.stringify(cfg));
+}
+
+function updateGithubBadge() {
+    const cfg = getGithubConfig();
+    const badge = document.getElementById('githubStatusBadge');
+    if (cfg.user && cfg.repo && cfg.token) {
+        badge.textContent = `⚓ Synced to ${cfg.user}/${cfg.repo}`;
+        badge.className = 'github-sync-status connected';
+    } else {
+        badge.textContent = '⚓ Local Only';
+        badge.className = 'github-sync-status disconnected';
+    }
+}
+
+function showGithubMsg(text, type) {
+    const el = document.getElementById('githubMsg');
+    el.innerHTML = `<div class="msg ${type}" style="padding:8px 12px;margin:0;">${text}</div>`;
+    if (type !== 'error') {
+        setTimeout(() => { el.innerHTML = ''; }, 4000);
+    }
+}
+
+async function connectGithub() {
+    const user = document.getElementById('githubUser').value.trim();
+    const repo = document.getElementById('githubRepo').value.trim();
+    const token = document.getElementById('githubToken').value.trim();
+
+    if (!user || !repo || !token) {
+        showGithubMsg('❌ Fill in all 3 fields: Username, Repo & Token', 'error');
+        return;
+    }
+
+    // Test the connection by fetching the repo
+    const testUrl = `https://api.github.com/repos/${user}/${repo}/contents/v.json`;
+    try {
+        const resp = await fetch(testUrl, {
+            headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        
+        if (resp.status === 200 || resp.status === 404) {
+            // Valid connection
+            saveGithubConfig({ user, repo, token });
+            updateGithubBadge();
+            showGithubMsg('✅ Connected to GitHub! Syncing data...', 'success');
+            
+            // Load existing data from GitHub if available
+            if (resp.status === 200) {
+                await pullFromGithub();
+            } else {
+                // Create initial v.json on GitHub
+                await pushToGithub();
+            }
+        } else if (resp.status === 401) {
+            showGithubMsg('❌ Invalid token! Check your Personal Access Token.', 'error');
+        } else if (resp.status === 403) {
+            showGithubMsg('❌ Rate limited or no access. Check token permissions.', 'error');
+        } else {
+            const errData = await resp.json().catch(() => ({}));
+            showGithubMsg(`❌ GitHub error (${resp.status}): ${errData.message || 'Unknown'}`, 'error');
+        }
+    } catch (e) {
+        showGithubMsg(`❌ Network error: ${e.message}`, 'error');
+    }
+}
+
+async function pushToGithub() {
+    const cfg = getGithubConfig();
+    if (!cfg.token) { showGithubMsg('❌ Not connected to GitHub!', 'error'); return; }
+
+    const data = getData();
+    // Create a clean version for GitHub (without potentially oversized data URIs in the preview)
+    const payload = JSON.stringify(data, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(payload)));
+
+    const url = `https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/v.json`;
+
+    // First check if file exists to get SHA
+    let sha = null;
+    try {
+        const checkResp = await fetch(url, {
+            headers: { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (checkResp.status === 200) {
+            const existing = await checkResp.json();
+            sha = existing.sha;
+        }
+    } catch(e) {}
+
+    const body = {
+        message: '☠ Pirates Ship Vault — data sync',
+        content: encoded,
+        branch: 'main'
+    };
+    if (sha) body.sha = sha;
+
+    try {
+        const resp = await fetch(url, {
+            method: 'PUT',
+            headers: { 'Authorization': `Bearer ${cfg.token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+        if (resp.status === 200 || resp.status === 201) {
+            showGithubMsg('✅ Data pushed to GitHub successfully!', 'success');
+        } else {
+            const err = await resp.json().catch(() => ({}));
+            showGithubMsg(`❌ Push failed (${resp.status}): ${err.message || 'Unknown'}`, 'error');
+        }
+    } catch(e) {
+        showGithubMsg(`❌ Push error: ${e.message}`, 'error');
+    }
+}
+
+async function pullFromGithub() {
+    const cfg = getGithubConfig();
+    if (!cfg.token) { showGithubMsg('❌ Not connected to GitHub!', 'error'); return; }
+
+    const url = `https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/v.json`;
+
+    try {
+        const resp = await fetch(url, {
+            headers: { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (resp.status === 200) {
+            const data = await resp.json();
+            // Decode content
+            const decoded = decodeURIComponent(escape(atob(data.content)));
+            const parsed = JSON.parse(decoded);
+            
+            // Merge with local — GitHub data takes precedence
+            saveData(parsed);
+            showGithubMsg('✅ Data pulled from GitHub successfully!', 'success');
+            refreshFileLists();
+            refreshJsonPreview();
+        } else if (resp.status === 404) {
+            showGithubMsg('ℹ️ No v.json on GitHub yet. Push your data first.', 'info');
+        } else {
+            const err = await resp.json().catch(() => ({}));
+            showGithubMsg(`❌ Pull failed (${resp.status}): ${err.message || 'Unknown'}`, 'error');
+        }
+    } catch(e) {
+        showGithubMsg(`❌ Pull error: ${e.message}`, 'error');
+    }
+}
+
+function disconnectGithub() {
+    localStorage.removeItem(GITHUB_CONFIG_KEY);
+    document.getElementById('githubUser').value = '';
+    document.getElementById('githubRepo').value = '';
+    document.getElementById('githubToken').value = '';
+    updateGithubBadge();
+    showGithubMsg('🔌 Disconnected from GitHub.', 'info');
+}
+
+// ================================================================
+// EXPORT / IMPORT
+// ================================================================
+function exportData() {
+    const data = getData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'v.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showDashMsg('⬇️ Data exported as v.json', 'success');
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const parsed = JSON.parse(e.target.result);
+            if (!parsed.password || !parsed.files === undefined) {
+                showDashMsg('❌ Invalid v.json format!', 'error');
+                return;
+            }
+            saveData(parsed);
+            showDashMsg('✅ Data imported successfully!', 'success');
+            refreshFileLists();
+            refreshJsonPreview();
+        } catch(err) {
+            showDashMsg(`❌ Import error: ${err.message}`, 'error');
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
+
+// ================================================================
 // DOM REFS
 // ================================================================
 const $ = id => document.getElementById(id);
-const pageLogin    = $('pageLogin');
+const pageLogin     = $('pageLogin');
 const pageDashboard = $('pageDashboard');
-const pageWiped    = $('pageWiped');
-const loginMsg     = $('loginMsg');
-const dashMsg      = $('dashMsg');
+const pageWiped     = $('pageWiped');
+const loginMsg      = $('loginMsg');
+const dashMsg       = $('dashMsg');
 const attemptDisplay = $('attemptDisplay');
-const dashAttempts  = $('dashAttempts');
-const mediaFileList = $('mediaFileList');
-const txtFileList   = $('txtFileList');
-const videoPlayer   = $('videoPlayer');
-const audioPlayer   = $('audioPlayer');
-const txtEditor     = $('txtEditor');
-const txtEditorArea = $('txtEditorArea');
+const dashAttempts   = $('dashAttempts');
+const mediaFileList  = $('mediaFileList');
+const txtFileList    = $('txtFileList');
+const videoPlayer    = $('videoPlayer');
+const audioPlayer    = $('audioPlayer');
+const txtEditor      = $('txtEditor');
+const txtEditorArea  = $('txtEditorArea');
 const currentTxtName = $('currentTxtName');
-const fileCount     = $('fileCount');
+const fileCount      = $('fileCount');
 
 let editingTxtId = null;
 
@@ -586,25 +701,13 @@ let bgSource = 'mp3';
 let bgPlaying = true;
 
 function initBgMedia() {
-    bgAudio.volume = 0.3;
-    bgVideo.volume = 0.3;
-    
-    const playPromise = bgAudio.play();
-    if (playPromise !== undefined) {
-        playPromise.catch(() => {
-            console.log('BG autoplay blocked, waiting for user gesture');
-        });
-    }
-    
+    bgAudio.volume = 0.3; bgVideo.volume = 0.3;
+    const p = bgAudio.play();
+    if (p !== undefined) p.catch(() => {});
     bgVideo.play().catch(() => {});
-    
     document.addEventListener('click', () => {
-        if (bgPlaying && bgAudio.paused && bgSource === 'mp3') {
-            bgAudio.play().catch(() => {});
-        }
-        if (bgPlaying && bgVideo.paused && bgSource === 'mp4') {
-            bgVideo.play().catch(() => {});
-        }
+        if (bgPlaying && bgAudio.paused && bgSource === 'mp3') bgAudio.play().catch(() => {});
+        if (bgPlaying && bgVideo.paused && bgSource === 'mp4') bgVideo.play().catch(() => {});
     }, { once: true });
 }
 
@@ -616,47 +719,35 @@ $('bgToggle').addEventListener('click', () => {
     if (bgPlaying) {
         if (bgSource === 'mp3') bgAudio.play().catch(() => {});
         else bgVideo.play().catch(() => {});
-    } else {
-        bgAudio.pause();
-        bgVideo.pause();
-    }
+    } else { bgAudio.pause(); bgVideo.pause(); }
 });
 
 $('bgVolume').addEventListener('input', (e) => {
     const v = parseFloat(e.target.value);
-    bgAudio.volume = v;
-    bgVideo.volume = v;
+    bgAudio.volume = v; bgVideo.volume = v;
 });
 
 $('bgSource').addEventListener('click', () => {
     if (bgSource === 'mp3') {
-        bgSource = 'mp4';
-        bgAudio.pause();
+        bgSource = 'mp4'; bgAudio.pause();
         $('bgSource').textContent = '🎬 MP4';
         if (bgPlaying) bgVideo.play().catch(() => {});
     } else {
-        bgSource = 'mp3';
-        bgVideo.pause();
+        bgSource = 'mp3'; bgVideo.pause();
         $('bgSource').textContent = '🎵 MP3';
         if (bgPlaying) bgAudio.play().catch(() => {});
     }
 });
 
 // ================================================================
-// CORE LOGIN / LOGOUT / FORMAT
+// LOGIN / LOGOUT / FORMAT
 // ================================================================
 function handleLogin() {
     const data = getData();
     const pass = $('loginPass').value.trim();
-
-    if (data.locked) {
-        showLoginMsg('🔒 ACCOUNT LOCKED — too many failed attempts.', 'error');
-        return;
-    }
-
+    if (data.locked) { showLoginMsg('🔒 LOCKED — too many failed attempts.', 'error'); return; }
     if (pass === data.password) {
-        data.failed_attempts = 0;
-        saveData(data);
+        data.failed_attempts = 0; saveData(data);
         showLoginMsg('✅ Access granted!', 'success');
         setTimeout(() => {
             $('appContainer').classList.remove('locked');
@@ -664,17 +755,12 @@ function handleLogin() {
         }, 500);
     } else {
         data.failed_attempts = (data.failed_attempts || 0) + 1;
-        const remaining = MAX_ATTEMPTS - data.failed_attempts;
-        showLoginMsg(`❌ Wrong password! Attempt ${data.failed_attempts}/${MAX_ATTEMPTS}`, 'error');
-
+        showLoginMsg(`❌ Wrong! Attempt ${data.failed_attempts}/${MAX_ATTEMPTS}`, 'error');
         if (data.failed_attempts >= MAX_ATTEMPTS) {
-            data.locked = true;
-            saveData(data);
+            data.locked = true; saveData(data);
             $('appContainer').classList.add('locked');
-            showLoginMsg('☠ TOO MANY FAILED ATTEMPTS. FORMATTING...', 'error');
-            setTimeout(() => {
-                handleFormat();
-            }, 1200);
+            showLoginMsg('☠ TOO MANY FAILED. FORMATTING...', 'error');
+            setTimeout(() => handleFormat(), 1200);
         } else {
             saveData(data);
             updateAttemptDisplay(data);
@@ -695,24 +781,17 @@ function handleLogout() {
 
 function handleFormat() {
     localStorage.removeItem(STORAGE_KEY);
-    
     $('appContainer').classList.remove('locked');
     $('appContainer').classList.add('wiped-state');
-    
     pageLogin.classList.add('hidden');
     pageDashboard.classList.add('hidden');
     pageWiped.classList.remove('hidden');
 }
 
-function showLoginMsg(text, type) {
-    loginMsg.innerHTML = `<div class="msg ${type}">${text}</div>`;
-}
-
+function showLoginMsg(text, type) { loginMsg.innerHTML = `<div class="msg ${type}">${text}</div>`; }
 function showDashMsg(text, type) {
     dashMsg.innerHTML = `<div class="msg ${type}">${text}</div>`;
-    if (type !== 'error') {
-        setTimeout(() => { dashMsg.innerHTML = ''; }, 3000);
-    }
+    if (type !== 'error') setTimeout(() => { dashMsg.innerHTML = ''; }, 3000);
 }
 
 function updateAttemptDisplay(data) {
@@ -728,6 +807,12 @@ function showDashboard() {
     updateAttemptDisplay(data);
     refreshFileLists();
     refreshJsonPreview();
+    updateGithubBadge();
+    // Pre-fill GitHub fields if configured
+    const cfg = getGithubConfig();
+    if (cfg.user) $('githubUser').value = cfg.user;
+    if (cfg.repo) $('githubRepo').value = cfg.repo;
+    if (cfg.token) $('githubToken').value = cfg.token;
 }
 
 // ================================================================
@@ -736,94 +821,67 @@ function showDashboard() {
 function uploadMedia() {
     const fileInput = $('mediaUpload');
     const file = fileInput.files[0];
-    if (!file) { showDashMsg('❌ Select a media file first!', 'error'); return; }
-
+    if (!file) { showDashMsg('❌ Select a media file!', 'error'); return; }
     const ext = file.name.split('.').pop().toLowerCase();
-    if (ext !== 'mp3' && ext !== 'mp4') {
-        showDashMsg('❌ Only MP3 and MP4 files allowed!', 'error');
-        return;
-    }
-
+    if (ext !== 'mp3' && ext !== 'mp4') { showDashMsg('❌ Only MP3/MP4!', 'error'); return; }
     const reader = new FileReader();
     reader.onload = function(e) {
-        const dataUrl = e.target.result;
         const data = getData();
-        const fileEntry = {
-            id: generateId(),
-            name: file.name,
+        data.files.push({
+            id: generateId(), name: file.name,
             type: ext === 'mp3' ? 'audio/mpeg' : 'video/mp4',
-            data: dataUrl,
-            size: file.size,
-            kind: 'media',
+            data: e.target.result, size: file.size, kind: 'media',
             uploaded: new Date().toISOString()
-        };
-        data.files.push(fileEntry);
+        });
         saveData(data);
         fileInput.value = '';
         showDashMsg(`✅ "${file.name}" uploaded!`, 'success');
-        refreshFileLists();
-        refreshJsonPreview();
     };
     reader.readAsDataURL(file);
 }
 
-function playMedia(fileEntry) {
+function playMedia(entry) {
     videoPlayer.pause(); videoPlayer.style.display = 'none';
     audioPlayer.pause(); audioPlayer.style.display = 'none';
-
-    if (fileEntry.type === 'audio/mpeg') {
-        audioPlayer.src = fileEntry.data;
+    if (entry.type === 'audio/mpeg') {
+        audioPlayer.src = entry.data;
         audioPlayer.style.display = 'block';
         audioPlayer.play().catch(() => {});
     } else {
-        videoPlayer.src = fileEntry.data;
+        videoPlayer.src = entry.data;
         videoPlayer.style.display = 'block';
         videoPlayer.play().catch(() => {});
     }
-    showDashMsg(`▶ Playing: ${fileEntry.name}`, 'info');
+    showDashMsg(`▶ Playing: ${entry.name}`, 'info');
 }
 
-function deleteMedia(fileId) {
-    if (!confirm('Delete this media file?')) return;
+function deleteMedia(id) {
+    if (!confirm('Delete this media?')) return;
     const data = getData();
-    data.files = data.files.filter(f => f.id !== fileId);
+    data.files = data.files.filter(f => f.id !== id);
     saveData(data);
-    refreshFileLists();
-    refreshJsonPreview();
     showDashMsg('🗑 Media deleted', 'info');
 }
 
 // ================================================================
-// TEXT FILE OPERATIONS
+// TEXT FILES
 // ================================================================
 function uploadTxt() {
-    const fileInput = $('txtUpload');
-    const file = fileInput.files[0];
+    const fi = $('txtUpload');
+    const file = fi.files[0];
     if (!file) { showDashMsg('❌ Select a .txt file!', 'error'); return; }
-    if (!file.name.endsWith('.txt')) {
-        showDashMsg('❌ Only .txt files allowed!', 'error');
-        return;
-    }
-
+    if (!file.name.endsWith('.txt')) { showDashMsg('❌ Only .txt!', 'error'); return; }
     const reader = new FileReader();
     reader.onload = function(e) {
-        const content = e.target.result;
         const data = getData();
-        const fileEntry = {
-            id: generateId(),
-            name: file.name,
-            type: 'text/plain',
-            content: content,
-            size: file.size,
-            kind: 'text',
+        data.files.push({
+            id: generateId(), name: file.name, type: 'text/plain',
+            content: e.target.result, size: file.size, kind: 'text',
             uploaded: new Date().toISOString()
-        };
-        data.files.push(fileEntry);
+        });
         saveData(data);
-        fileInput.value = '';
+        fi.value = '';
         showDashMsg(`✅ "${file.name}" uploaded!`, 'success');
-        refreshFileLists();
-        refreshJsonPreview();
     };
     reader.readAsText(file);
 }
@@ -831,73 +889,52 @@ function uploadTxt() {
 function createNewTxt() {
     const name = $('newTxtName').value.trim();
     if (!name) { showDashMsg('❌ Enter a filename!', 'error'); return; }
-    const finalName = name.endsWith('.txt') ? name : name + '.txt';
-
+    const fn = name.endsWith('.txt') ? name : name + '.txt';
     const data = getData();
-    if (data.files.some(f => f.kind === 'text' && f.name === finalName)) {
-        showDashMsg(`❌ "${finalName}" already exists!`, 'error');
-        return;
+    if (data.files.some(f => f.kind === 'text' && f.name === fn)) {
+        showDashMsg(`❌ "${fn}" exists!`, 'error'); return;
     }
-
-    const fileEntry = {
-        id: generateId(),
-        name: finalName,
-        type: 'text/plain',
-        content: '',
-        size: 0,
-        kind: 'text',
+    data.files.push({
+        id: generateId(), name: fn, type: 'text/plain',
+        content: '', size: 0, kind: 'text',
         uploaded: new Date().toISOString()
-    };
-    data.files.push(fileEntry);
+    });
     saveData(data);
     $('newTxtName').value = '';
-    showDashMsg(`✅ "${finalName}" created!`, 'success');
-    refreshFileLists();
-    refreshJsonPreview();
-    openTxtForEdit(fileEntry.id);
+    showDashMsg(`✅ "${fn}" created!`, 'success');
+    openTxtForEdit(data.files[data.files.length-1].id);
 }
 
-function openTxtForEdit(fileId) {
+function openTxtForEdit(id) {
     const data = getData();
-    const file = data.files.find(f => f.id === fileId);
-    if (!file || file.kind !== 'text') return;
-
-    editingTxtId = fileId;
-    currentTxtName.textContent = file.name;
-    txtEditor.value = file.content || '';
+    const f = data.files.find(x => x.id === id);
+    if (!f || f.kind !== 'text') return;
+    editingTxtId = id;
+    currentTxtName.textContent = f.name;
+    txtEditor.value = f.content || '';
     txtEditorArea.style.display = 'block';
 }
 
 function saveTxtFile() {
     if (!editingTxtId) return;
     const data = getData();
-    const idx = data.files.findIndex(f => f.id === editingTxtId);
-    if (idx === -1) { showDashMsg('❌ File not found!', 'error'); return; }
-
-    const newContent = txtEditor.value;
-    data.files[idx].content = newContent;
-    data.files[idx].size = new Blob([newContent]).size;
+    const idx = data.files.findIndex(x => x.id === editingTxtId);
+    if (idx === -1) { showDashMsg('❌ Not found!', 'error'); return; }
+    data.files[idx].content = txtEditor.value;
+    data.files[idx].size = new Blob([txtEditor.value]).size;
     saveData(data);
-    showDashMsg('💾 File saved!', 'success');
-    refreshFileLists();
-    refreshJsonPreview();
+    showDashMsg('💾 Saved!', 'success');
 }
 
-function closeTxtEditor() {
-    txtEditorArea.style.display = 'none';
-    editingTxtId = null;
-    txtEditor.value = '';
-}
+function closeTxtEditor() { txtEditorArea.style.display = 'none'; editingTxtId = null; txtEditor.value = ''; }
 
-function deleteTxtFile(fileId) {
+function deleteTxtFile(id) {
     if (!confirm('Delete this text file?')) return;
     const data = getData();
-    data.files = data.files.filter(f => f.id !== fileId);
+    data.files = data.files.filter(f => f.id !== id);
     saveData(data);
-    if (editingTxtId === fileId) closeTxtEditor();
-    refreshFileLists();
-    refreshJsonPreview();
-    showDashMsg('🗑 Text file deleted', 'info');
+    if (editingTxtId === id) closeTxtEditor();
+    showDashMsg('🗑 Deleted', 'info');
 }
 
 // ================================================================
@@ -907,13 +944,11 @@ function refreshFileLists() {
     const data = getData();
     const mediaFiles = data.files.filter(f => f.kind === 'media');
     const textFiles  = data.files.filter(f => f.kind === 'text');
-
     fileCount.textContent = `Files: ${data.files.length}`;
-
-    if (mediaFiles.length === 0) {
-        mediaFileList.innerHTML = '<div style="color:#555;font-size:0.8em;padding:10px;">No media uploaded yet.</div>';
-    } else {
-        mediaFileList.innerHTML = mediaFiles.map(f => `
+    
+    mediaFileList.innerHTML = mediaFiles.length === 0
+        ? '<div style="color:#555;font-size:0.8em;padding:10px;">No media uploaded yet.</div>'
+        : mediaFiles.map(f => `
             <div class="file-item">
                 <span class="fname" onclick="playMedia(getFileById('${f.id}'))">
                     ${f.type === 'audio/mpeg' ? '🎵' : '🎬'} ${f.name}
@@ -925,16 +960,12 @@ function refreshFileLists() {
                 </div>
             </div>
         `).join('');
-    }
-
-    if (textFiles.length === 0) {
-        txtFileList.innerHTML = '<div style="color:#555;font-size:0.8em;padding:10px;">No text files yet.</div>';
-    } else {
-        txtFileList.innerHTML = textFiles.map(f => `
+    
+    txtFileList.innerHTML = textFiles.length === 0
+        ? '<div style="color:#555;font-size:0.8em;padding:10px;">No text files yet.</div>'
+        : textFiles.map(f => `
             <div class="file-item">
-                <span class="fname" onclick="openTxtForEdit('${f.id}')">
-                    📄 ${f.name}
-                </span>
+                <span class="fname" onclick="openTxtForEdit('${f.id}')">📄 ${f.name}</span>
                 <span class="fsize">${formatSize(f.size)}</span>
                 <div class="factions">
                     <button onclick="openTxtForEdit('${f.id}')">✎</button>
@@ -942,17 +973,13 @@ function refreshFileLists() {
                 </div>
             </div>
         `).join('');
-    }
 }
 
-function getFileById(id) {
-    return getData().files.find(f => f.id === id);
-}
+function getFileById(id) { return getData().files.find(f => f.id === id); }
 
 function formatSize(bytes) {
-    if (bytes === 0) return '0 B';
-    const k = 1024;
-    const sizes = ['B', 'KB', 'MB'];
+    if (!bytes || bytes === 0) return '0 B';
+    const k = 1024; const sizes = ['B','KB','MB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
 }
@@ -972,22 +999,14 @@ function refreshJsonPreview() {
                 failed_attempts: data.failed_attempts,
                 locked: data.locked,
                 files: data.files.map(f => ({
-                    id: f.id,
-                    name: f.name,
-                    type: f.type || f.kind,
-                    size: f.size,
-                    kind: f.kind,
-                    uploaded: f.uploaded,
-                    data_preview: f.data ? f.data.substring(0, 60) + '... [BASE64 TRIMMED]' : (f.content ? f.content.substring(0, 80) + '...' : '')
+                    id: f.id, name: f.name, type: f.type || f.kind,
+                    size: f.size, kind: f.kind, uploaded: f.uploaded,
+                    data: f.data ? f.data.substring(0,50)+'...[BASE64]' : (f.content ? f.content.substring(0,60)+'...' : '')
                 }))
             };
             el.textContent = JSON.stringify(preview, null, 2);
-        } else {
-            el.textContent = '{ /* No data yet */ }';
-        }
-    } catch(e) {
-        el.textContent = '{ /* Error reading data */ }';
-    }
+        } else { el.textContent = '{ /* No data */ }'; }
+    } catch(e) { el.textContent = '{ /* Error */ }'; }
 }
 
 // ================================================================
@@ -995,7 +1014,6 @@ function refreshJsonPreview() {
 // ================================================================
 (function init() {
     const data = getData();
-    
     if (data.locked && data.failed_attempts >= MAX_ATTEMPTS) {
         $('appContainer').classList.add('wiped-state');
         pageLogin.classList.add('hidden');
@@ -1006,11 +1024,10 @@ function refreshJsonPreview() {
         pageDashboard.classList.add('hidden');
         pageWiped.classList.add('hidden');
     }
-    
     initBgMedia();
     refreshJsonPreview();
+    updateGithubBadge();
 })();
 </script>
-
 </body>
 </html>
